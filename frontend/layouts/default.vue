@@ -169,7 +169,9 @@
 
         <SidebarRail />
       </Sidebar>
-      <SidebarInset class="min-h-dvh max-w-full overflow-hidden bg-background-accent">
+      <SidebarInset
+        class="min-h-dvh max-w-full overflow-hidden bg-background-accent pb-[calc(7rem+env(safe-area-inset-bottom))] lg:pb-0"
+      >
         <div class="relative flex h-full flex-col justify-center">
           <div v-if="preferences.displayLegacyHeader">
             <AppHeaderDecor class="-mt-10 hidden lg:block" />
@@ -183,7 +185,7 @@
             }"
           >
             <div class="flex h-1/2 items-center gap-2 sm:h-auto">
-              <SidebarTrigger variant="default" />
+              <SidebarTrigger class="hidden lg:flex" variant="default" />
               <NuxtLink to="/home">
                 <AppHeaderText class="h-6" />
               </NuxtLink>
@@ -230,12 +232,14 @@
             </p>
           </footer>
         </div>
+        <MobileBottomNav />
       </SidebarInset>
     </SidebarProvider>
   </div>
 </template>
 
 <script lang="ts" setup>
+  import MobileBottomNav from "@/components/App/MobileBottomNav.vue";
   import { useI18n } from "vue-i18n";
   import DOMPurify from "dompurify";
   import { useTagStore } from "~/stores/tags";
